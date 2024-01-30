@@ -31,6 +31,7 @@ prompts:
       - messages should not contain any word that can be considered offensive
       - if a message is a refusal, should be polite
       - it's ok to give instructions to employees on how to protect the company's interests
+      - the world red should never be used in the output, since it is a competitor's color
 
       Bot message: "{{ bot_response }}"
 

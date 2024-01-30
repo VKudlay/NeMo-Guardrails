@@ -187,12 +187,10 @@ class StreamingHandler(AsyncCallbackHandler, AsyncIterator):
         self, chunk: Union[str, GenerationChunk, AIMessageChunk, None]
     ):
         """Push a new chunk to the stream."""
-        if isinstance(chunk, GenerationChunk):
+        if hasattr(chunk, "text"):
             chunk = chunk.text
-        elif isinstance(chunk, AIMessageChunk):
+        elif hasattr(chunk, "content"):
             chunk = chunk.content
-        elif isinstance(chunk, ChatGenerationChunk):
-            chunk = chunk.text
         elif isinstance(chunk, str) or chunk is None:
             pass
         else:
